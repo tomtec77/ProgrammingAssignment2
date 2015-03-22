@@ -19,6 +19,8 @@
 ## function is always invertible - thus I haven't added any checks to verify
 ## whether x is indeed a square matrix, if it's numeric, etc. R function solve()
 ## returns the inverse of a square matrix.
+## Note that the new object is a list, not a matrix - to print the values in the
+## original matrix, use x$get()
 makeCacheMatrix <- function(x = matrix()) {
     m <- NULL
     set <- function(y) {
@@ -53,7 +55,7 @@ cacheSolve <- function(x, ...) {
         return(m)
     }
     data <- x$get()
-    m <- solve(data)
+    m <- solve(data, ...)
     x$setinv(m)
     m
 }
